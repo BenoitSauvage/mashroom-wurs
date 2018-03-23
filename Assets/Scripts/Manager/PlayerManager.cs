@@ -32,8 +32,6 @@ public class PlayerManager {
             RaycastHit hit = new RaycastHit();
             Physics.Raycast(ray, out hit);
 
-            Debug.Log(hit.collider);
-
             if (hit.collider && hit.collider.CompareTag("PlayerMushroom")) {
                 hasClicked = true;
                 selectedUnit = hit.collider.transform;

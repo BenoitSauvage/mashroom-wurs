@@ -39,7 +39,6 @@ public class UnitsManager {
                 td.script.UpdateDestination(td.end);
 
             td.timePassed += _dt;
-            Debug.Log(td.script.IsArrived());
 
             if (td.script.IsArrived()) {
                 playerUnits.Remove(td);
