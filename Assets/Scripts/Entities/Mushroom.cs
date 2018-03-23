@@ -16,8 +16,6 @@ public class Mushroom : MonoBehaviour {
         if (units < GV.MUSHROOM_MAX_UNIT * level && timePassed * level >= GV.UNIT_SPAWN_RATE) {
             units += 1;
             timePassed = 0f;
-
-            Debug.Log(units);
         }
     }
 

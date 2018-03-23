@@ -29,7 +29,10 @@ public class PlayerManager {
     private void GetMouseInputs() {
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            RaycastHit hit = new RaycastHit();
+            Physics.Raycast(ray, out hit);
+
+            Debug.Log(hit.collider);
 
             if (hit.collider && hit.collider.CompareTag("PlayerMushroom")) {
                 hasClicked = true;
@@ -39,7 +42,8 @@ public class PlayerManager {
 
         if (hasClicked & Input.GetMouseButtonUp(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            RaycastHit hit = new RaycastHit();
+            Physics.Raycast(ray, out hit);
 
             if (hit.collider && hit.collider.CompareTag("AIMushroom")) {
                 UnitsManager.Instance.SendPlayerUnits(selectedUnit, hit.collider.transform, 1);

@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4268186269881584}
   - component: {fileID: 212781950393346434}
-  - component: {fileID: 61220041172814982}
   - component: {fileID: 114173641244161054}
+  - component: {fileID: 65305366662167338}
   m_Layer: 9
   m_Name: PlayerMushroom
   m_TagString: PlayerMushroom
@@ -42,31 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61220041172814982
-BoxCollider2D:
+--- !u!65 &65305366662167338
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542744394517820}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 1, y: 1.0000002, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114173641244161054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,7 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9e1858890374fa08fa1551eb9db22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLevel: 1
+  level: 1
+  units: 0
 --- !u!212 &212781950393346434
 SpriteRenderer:
   m_ObjectHideFlags: 1
