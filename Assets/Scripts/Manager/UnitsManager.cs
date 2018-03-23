@@ -36,11 +36,11 @@ public class UnitsManager {
             TransformDestinations td = playerUnits[i];
 
             if (td.timePassed >= 0)
-                td.unit.transform.position = Vector3.Lerp(td.start.position, td.end.position, td.timePassed / GV.UNIT_TRAVEL_TIME);
+                td.script.UpdateDestination(td.end);
 
             td.timePassed += _dt;
 
-            if (td.timePassed > GV.UNIT_TRAVEL_TIME) {
+            if (td.script.IsArrived()) {
                 playerUnits.Remove(td);
                 GameObject.Destroy(td.unit.gameObject);
             }
@@ -53,8 +53,6 @@ public class UnitsManager {
 
         float unitsToSend = Mathf.Floor(_mStart.units * _percentage);
         float _startDelay = 0f;
-
-        Debug.Log("Unit to send : " + unitsToSend);
 
         for (int i = 0; i < unitsToSend; i++) {
             GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/PlayerUnit"));
@@ -76,12 +74,16 @@ public class UnitsManager {
 
         public Transform unit, start, end;
         public float timePassed = 0;
+        public Unit script;
 
         public TransformDestinations(Transform _unit, Transform _start, Transform _end, float _delay) {
             unit = _unit;
             start = _start;
             end = _end;
             timePassed = -_delay;
+            script = unit.GetComponent<Unit>();
+
+            script.Init();
         }
     }
    
