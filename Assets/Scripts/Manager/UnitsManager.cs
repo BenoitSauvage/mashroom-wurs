@@ -47,8 +47,23 @@ public class UnitsManager {
         }
     }
 
-    public void SendPlayerUnits (Transform _start, Transform _end, float _percentage) {
+    public void UpdateAIUnits(float _dt) {
+        for (int i = aiUnits.Count - 1; i >= 0; i--) {
+            TransformDestinations td = aiUnits[i];
 
+            if (td.timePassed >= 0)
+                td.script.UpdateDestination(td.end);
+
+            td.timePassed += _dt;
+
+            if (td.script.IsArrived()) {
+                aiUnits.Remove(td);
+                GameObject.Destroy(td.unit.gameObject);
+            }
+        }
+    }
+
+    public void SendPlayerUnits (Transform _start, Transform _end, float _percentage) {
         Mushroom _mStart = _start.GetComponent<Mushroom>();
 
         float unitsToSend = Mathf.Floor(_mStart.units * _percentage);
@@ -62,6 +77,27 @@ public class UnitsManager {
 
             TransformDestinations td = new TransformDestinations(go.transform, _start, _end, _startDelay);
             playerUnits.Add(td);
+
+            _startDelay += GV.UNIT_SEND_INTERVAL;
+        }
+
+        _mStart.units -= unitsToSend;
+    }
+
+    public void SendAIUnits(Transform _start, Transform _end, float _percentage) {
+        Mushroom _mStart = _start.GetComponent<Mushroom>();
+
+        float unitsToSend = Mathf.Floor(_mStart.units * _percentage);
+        float _startDelay = 0f;
+
+        for (int i = 0; i < unitsToSend; i++) {
+            GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/AIUnit"));
+            go.transform.position = _start.position;
+            go.transform.SetParent(unitParent.transform);
+            go.GetComponent<Unit>().startDelay = _startDelay;
+
+            TransformDestinations td = new TransformDestinations(go.transform, _start, _end, _startDelay);
+            aiUnits.Add(td);
 
             _startDelay += GV.UNIT_SEND_INTERVAL;
         }

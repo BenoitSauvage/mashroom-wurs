@@ -11,4 +11,7 @@ public class GV {
 
     // MUSHROOM
     public static readonly int MUSHROOM_MAX_UNIT = 20;
+
+    // AI
+    public static readonly List<float> SPAWN_PERCENTAGE = new List<float>(){ .1f, .25f, .5f, .75f, 1f };
 }

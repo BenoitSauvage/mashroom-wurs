@@ -39,10 +39,30 @@ public class MushroomManager
             kv.Value.MushroomUpdate(_dt);
     }
 
-    public void UpdatePlayerUnitNumber (Transform _mushroom, int _unitsToRemove) {
-        foreach (KeyValuePair<Transform, Mushroom> kv in m_player)
-            if (kv.Key == _mushroom)
-                kv.Value.units -= _unitsToRemove;
+    public Transform GetRandomPlayerMushroom() {
+        int rand = Random.Range(0, m_player.Count);
+        int count = 0;
+
+        foreach (KeyValuePair<Transform, Mushroom> kv in m_player) {
+            if (count == rand)
+                return kv.Key;
+            count++;
+        }
+
+        return null;
+    }
+
+    public Transform GetRandomAIMushroom() {
+        int rand = Random.Range(0, m_ai.Count);
+        int count = 0;
+
+        foreach (KeyValuePair<Transform, Mushroom> kv in m_ai) {
+            if (count == rand) 
+                return kv.Key;
+            count++;
+        }
+
+        return null;
     }
 
 }

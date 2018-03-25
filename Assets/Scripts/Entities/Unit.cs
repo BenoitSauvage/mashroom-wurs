@@ -15,11 +15,10 @@ public class Unit : MonoBehaviour {
 
     void Update() {
         transform.eulerAngles = new Vector3(90, 0, 0);
-	}
+    }
 
 	public void Init () {
-        transform.eulerAngles = new Vector3(90, 0, 0);
-        agent = GetComponent<NavMeshAgent>();  
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public void UpdateDestination (Transform _destination) {

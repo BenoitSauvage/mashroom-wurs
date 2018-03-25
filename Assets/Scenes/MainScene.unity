@@ -4326,8 +4326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3125721575c746d5aab4ffcac401f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIChamps: {fileID: 1945442812}
-  PlayerChamps: {fileID: 970684681}
+  PlayerChamps: {fileID: 1945442812}
+  AIChamps: {fileID: 970684681}
+  AIUnitsSpawnRange: {x: 5, y: 10}
 --- !u!4 &1814596760
 Transform:
   m_ObjectHideFlags: 0
