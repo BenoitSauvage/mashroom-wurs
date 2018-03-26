@@ -132,6 +132,8 @@ public class UnitsManager {
                 RemoveUnitFromList(_transform, aiUnits);
                 break;
         }
+
+        GameObject.Destroy(_transform.gameObject);
     }
 
     private void RemoveUnitFromList (Transform _transform, List<TransformDestinations> _list) {
