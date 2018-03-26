@@ -8,6 +8,7 @@ public class NextScene : MonoBehaviour {
 
     public void ToScene(string nameScene)
     {
+        Debug.Log("here");
         SceneManager.LoadScene(nameScene);
     }
 }

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayerMushroom
+  - AIMushroom
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Map
+  - Mushrooms
+  - Units
+  - Cloud
   - 
   - 
   - 
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 2042605191
+    locked: 0
+  - name: Units
+    uniqueID: 3681896719
+    locked: 0
+  - name: Mushrooms
+    uniqueID: 3891250169
+    locked: 0
+  - name: Clouds
+    uniqueID: 2877777695
     locked: 0
