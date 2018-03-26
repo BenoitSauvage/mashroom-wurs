@@ -41,8 +41,8 @@ public class UnitsManager {
             td.timePassed += _dt;
 
             if (td.script.IsArrived()) {
+                UnitsManager.Instance.Fight(td);
                 playerUnits.Remove(td);
-                GameObject.Destroy(td.unit.gameObject);
             }
         }
     }
@@ -57,8 +57,8 @@ public class UnitsManager {
             td.timePassed += _dt;
 
             if (td.script.IsArrived()) {
+                UnitsManager.Instance.Fight(td);
                 aiUnits.Remove(td);
-                GameObject.Destroy(td.unit.gameObject);
             }
         }
     }
@@ -103,6 +103,21 @@ public class UnitsManager {
         }
 
         _mStart.units -= unitsToSend;
+    }
+
+    public void Fight (TransformDestinations _td) {
+        Mushroom origin = _td.start.GetComponent<Mushroom>();
+        Mushroom dest = _td.end.GetComponent<Mushroom>();
+
+        if (dest.type != origin.type) {
+            dest.units -= (1 * _td.script.damage);
+
+            if (dest.units <= 0)
+                dest.SwitchTeam();
+        } else
+            dest.units += 1;
+
+        GameObject.Destroy(_td.unit.gameObject);
     }
 
 

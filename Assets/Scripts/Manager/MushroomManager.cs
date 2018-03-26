@@ -20,14 +20,20 @@ public class MushroomManager
     }
     #endregion singleton
 
-    Dictionary<Transform, Mushroom> m_player = new Dictionary<Transform, Mushroom>();
-    Dictionary<Transform, Mushroom> m_ai = new Dictionary<Transform, Mushroom>();
+    public Dictionary<Transform, Mushroom> m_player = new Dictionary<Transform, Mushroom>();
+    public Dictionary<Transform, Mushroom> m_ai = new Dictionary<Transform, Mushroom>();
 
-    public void Init(List<Transform> _player, List<Transform> _ai) {
-        foreach (Transform player in _player)
+    Transform playerParent;
+    Transform aiParent;
+
+    public void Init(Transform _player, Transform _ai) {
+        playerParent = _player;
+        aiParent = _ai;
+
+        foreach (Transform player in playerParent)
             m_player.Add(player, player.GetComponent<Mushroom>());
 
-        foreach (Transform ai in _ai)
+        foreach (Transform ai in aiParent)
             m_ai.Add(ai, ai.GetComponent<Mushroom>());
     }
 
@@ -63,6 +69,23 @@ public class MushroomManager
         }
 
         return null;
+    }
+
+    public void SwitchTeam (Transform _transform, GV.MUSHROMM_TYPE _type, Mushroom _mushroom) {
+        switch (_type) {
+            case GV.MUSHROMM_TYPE.PLAYER:
+                m_ai.Remove(_transform);
+                m_player.Add(_transform, _mushroom);
+                _transform.SetParent(playerParent);
+                _transform.tag = GV.MUSHROOM_TAG_PLAYER;
+                break;
+            case GV.MUSHROMM_TYPE.AI:
+                m_player.Remove(_transform);
+                m_ai.Add(_transform, _mushroom);
+                _transform.SetParent(aiParent);
+                _transform.tag = GV.MUSHROOM_TAG_AI;
+                break;
+        }
     }
 
 }

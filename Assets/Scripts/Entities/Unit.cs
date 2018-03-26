@@ -6,9 +6,7 @@ using UnityEngine.AI;
 public class Unit : MonoBehaviour {
 
     public float startDelay = 0f;
-
-    float life = 1f;
-    float damage = 1f;
+    public float damage = 1f;
 
     NavMeshAgent agent;
     Transform destination;

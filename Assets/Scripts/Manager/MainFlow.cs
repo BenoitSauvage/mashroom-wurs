@@ -14,13 +14,7 @@ public class MainFlow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        foreach (Transform child in AIChamps)
-            _aiChamps.Add(child);
-
-        foreach (Transform child in PlayerChamps)
-            _playerChamps.Add(child);
-
-        MushroomManager.Instance.Init(_playerChamps, _aiChamps);
+        MushroomManager.Instance.Init(PlayerChamps, AIChamps);
         AIManager.Instance.Init(AIUnitsSpawnRange);
         UnitsManager.Instance.Init();
 	}

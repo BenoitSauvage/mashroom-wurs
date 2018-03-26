@@ -10,6 +10,9 @@ public class GV {
     public static readonly float UNIT_SEND_INTERVAL = .1f;
 
     // MUSHROOM
+    public enum MUSHROMM_TYPE { PLAYER, AI };
+    public static readonly string MUSHROOM_TAG_PLAYER = "PlayerMushroom";
+    public static readonly string MUSHROOM_TAG_AI = "AIMushroom";
     public static readonly int MUSHROOM_MAX_UNIT = 20;
 
     // AI

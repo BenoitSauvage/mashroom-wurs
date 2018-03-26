@@ -32,7 +32,9 @@ public class AIManager {
     public void Update (float _dt) {
         timePassed += _dt;
 
-        if (timePassed >= spawnTime) {
+        if ((MushroomManager.Instance.m_ai.Count > 0 && MushroomManager.Instance.m_player.Count > 0) 
+            && timePassed >= spawnTime
+           ) {
             float percentage = GV.SPAWN_PERCENTAGE[Random.Range(0, GV.SPAWN_PERCENTAGE.Count)];
             Transform start = MushroomManager.Instance.GetRandomAIMushroom();
             Transform end = MushroomManager.Instance.GetRandomPlayerMushroom();
