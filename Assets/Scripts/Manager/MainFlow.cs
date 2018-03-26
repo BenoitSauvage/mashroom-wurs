@@ -9,11 +9,9 @@ public class MainFlow : MonoBehaviour {
 
     public Vector2Int AIUnitsSpawnRange = new Vector2Int(5, 10);
 
-    List<Transform> _playerChamps = new List<Transform>();
-    List<Transform> _aiChamps = new List<Transform>();
-
 	// Use this for initialization
 	void Start () {
+        UIManager.Instance.Init(GetComponent<UI>());
         MushroomManager.Instance.Init(PlayerChamps, AIChamps);
         AIManager.Instance.Init(AIUnitsSpawnRange);
         UnitsManager.Instance.Init();
@@ -26,6 +24,7 @@ public class MainFlow : MonoBehaviour {
         MushroomManager.Instance.Update(dt);
         PlayerManager.Instance.Update(dt);
         AIManager.Instance.Update(dt);
+        UIManager.Instance.Update(dt);
 
         if (UnitsManager.Instance.playerUnits.Count > 0)
             UnitsManager.Instance.UpdatePlayerUnits(dt);

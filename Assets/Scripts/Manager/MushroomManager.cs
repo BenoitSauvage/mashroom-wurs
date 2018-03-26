@@ -88,4 +88,22 @@ public class MushroomManager
         }
     }
 
+    public float GetAIUnitCount () {
+        float count = 0;
+
+        foreach (KeyValuePair<Transform, Mushroom> kv in m_ai)
+            count += kv.Value.units;
+
+        return count;
+    }
+
+    public float GetPlayerUnitCount() {
+        float count = 0;
+
+        foreach (KeyValuePair<Transform, Mushroom> kv in m_player)
+            count += kv.Value.units;
+
+        return count;
+    }
+
 }
