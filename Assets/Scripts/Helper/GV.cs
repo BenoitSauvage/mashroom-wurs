@@ -8,6 +8,8 @@ public class GV {
     public static readonly float UNIT_TRAVEL_TIME = 2f;
     public static readonly float UNIT_SPAWN_RATE = 1f;
     public static readonly float UNIT_SEND_INTERVAL = .1f;
+    public static readonly string UNIT_PLAYER_TAG = "PlayerUnit";
+    public static readonly string UNIT_AI_TAG = "AIUnit";
 
     // MUSHROOM
     public enum MUSHROMM_TYPE { PLAYER, AI };

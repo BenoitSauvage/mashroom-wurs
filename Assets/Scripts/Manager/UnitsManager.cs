@@ -120,6 +120,29 @@ public class UnitsManager {
         GameObject.Destroy(_td.unit.gameObject);
     }
 
+    public void RemoveUnit (Transform _transform, GV.MUSHROMM_TYPE _type) {
+        switch (_type) {
+            case GV.MUSHROMM_TYPE.PLAYER:
+                RemoveUnitFromList(_transform, playerUnits);
+                break;
+            case GV.MUSHROMM_TYPE.AI:
+                RemoveUnitFromList(_transform, aiUnits);
+                break;
+        }
+    }
+
+    private void RemoveUnitFromList (Transform _transform, List<TransformDestinations> _list) {
+        TransformDestinations toRemove = null;
+
+        foreach (TransformDestinations td in _list) {
+            if (td.unit == _transform) {
+                toRemove = td;
+                break;
+            }         
+        }
+
+        _list.Remove(toRemove);
+    }
 
     public class TransformDestinations {
 

@@ -26,7 +26,7 @@ public class Unit : MonoBehaviour {
 
     public bool IsArrived () {
         if (destination)
-            return Vector3.Distance(agent.transform.position, destination.transform.position) <= agent.stoppingDistance;
+            return Vector3.Distance(agent.transform.position, destination.transform.position) <= agent.stoppingDistance + .5f;
 
         return false;
     }

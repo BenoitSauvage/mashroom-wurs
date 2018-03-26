@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerMushroom
   - AIMushroom
+  - PlayerUnit
+  - AIUnit
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Mushrooms
   - Units
   - Cloud
-  - 
+  - Defense
   - 
   - 
   - 
