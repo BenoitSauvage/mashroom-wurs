@@ -43,7 +43,7 @@ public class PlayerManager {
             RaycastHit hit = new RaycastHit();
             Physics.Raycast(ray, out hit);
 
-            if (hit.collider && hit.collider.CompareTag(GV.MUSHROOM_TAG_AI)) {
+        if (hit.collider && (hit.collider.CompareTag(GV.MUSHROOM_TAG_AI) || hit.collider.CompareTag(GV.MUSHROOM_TAG_PLAYER))) {
                 UnitsManager.Instance.SendPlayerUnits(selectedUnit, hit.collider.transform, 1);
                 hasClicked = false;
                 selectedUnit = null;
