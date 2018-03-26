@@ -25,11 +25,12 @@ public class MainFlow : MonoBehaviour {
         PlayerManager.Instance.Update(dt);
         AIManager.Instance.Update(dt);
         UIManager.Instance.Update(dt);
+        UnitsManager.Instance.Update(dt);
 
-        if (UnitsManager.Instance.playerUnits.Count > 0)
-            UnitsManager.Instance.UpdatePlayerUnits(dt);
-
-        if (UnitsManager.Instance.aiUnits.Count > 0)
-            UnitsManager.Instance.UpdateAIUnits(dt);
-	}
+        if (MushroomManager.Instance.m_ai.Count <= 0 
+            && UnitsManager.Instance.playerUnits.Count <= 0 
+            && UnitsManager.Instance.aiUnits.Count <= 0 ) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(GV.GAME_OVER_SCENE);
+        }
+    }
 }

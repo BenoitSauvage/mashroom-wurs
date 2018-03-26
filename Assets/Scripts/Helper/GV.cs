@@ -25,4 +25,7 @@ public class GV {
 
     // AI
     public static readonly List<float> SPAWN_PERCENTAGE = new List<float>(){ .1f, .25f, .5f, .75f, 1f };
+
+    // OTHER
+    public static readonly string GAME_OVER_SCENE = "GameOver";
 }

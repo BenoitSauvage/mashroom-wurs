@@ -31,6 +31,14 @@ public class UnitsManager {
         }
     }
 
+    public void Update (float _dt) {
+        if (playerUnits.Count > 0)
+            UpdatePlayerUnits(_dt);
+
+        if (aiUnits.Count > 0)
+            UpdateAIUnits(_dt);
+    }
+
     public void UpdatePlayerUnits (float _dt) {
         for (int i = playerUnits.Count - 1; i >= 0; i--) {
             TransformDestinations td = playerUnits[i];
