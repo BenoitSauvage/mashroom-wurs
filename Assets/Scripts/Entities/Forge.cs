@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Forge : MonoBehaviour {
+public class Forge : House {
 
-    public float units = 0;
-    public GV.MUSHROMM_TYPE type;
+	private void Start() {
+        house_type = GV.MUSHROOM_HOUSE_TYPE.FORGE;
+	}
 }

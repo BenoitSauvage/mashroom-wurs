@@ -64,7 +64,7 @@ public class UnitsManager {
     }
 
     public void SendPlayerUnits (Transform _start, Transform _end, float _percentage) {
-        Mushroom _mStart = _start.GetComponent<Mushroom>();
+        House _mStart = _start.GetComponent<House>();
 
         float unitsToSend = Mathf.Floor(_mStart.units * _percentage);
         float _startDelay = 0f;
@@ -106,26 +106,29 @@ public class UnitsManager {
     }
 
     public void Fight (TransformDestinations _td) {
-        Mushroom origin = _td.start.GetComponent<Mushroom>();
-        Mushroom dest = _td.end.GetComponent<Mushroom>();
+        House origin = _td.start.GetComponent<House>();
+        House dest = _td.end.GetComponent<House>();
 
-        if (dest.type != origin.type) {
-            dest.units -= (1 * _td.script.damage);
+        if (dest.house_type == GV.MUSHROOM_HOUSE_TYPE.MUSHROOM && dest.type != origin.type) {
+            if (origin.house_type == GV.MUSHROOM_HOUSE_TYPE.FORGE)
+                dest.units -= (1 * GV.FORGE_DAMAGE_MULTIPLIER);
+            else
+                dest.units -= 1;
 
             if (dest.units <= 0)
-                dest.SwitchTeam();
+                dest.GetComponent<Mushroom>().SwitchTeam();
         } else
             dest.units += 1;
 
         GameObject.Destroy(_td.unit.gameObject);
     }
 
-    public void RemoveUnit (Transform _transform, GV.MUSHROMM_TYPE _type) {
+    public void RemoveUnit (Transform _transform, GV.MUSHROOM_TYPE _type) {
         switch (_type) {
-            case GV.MUSHROMM_TYPE.PLAYER:
+            case GV.MUSHROOM_TYPE.PLAYER:
                 RemoveUnitFromList(_transform, playerUnits);
                 break;
-            case GV.MUSHROMM_TYPE.AI:
+            case GV.MUSHROOM_TYPE.AI:
                 RemoveUnitFromList(_transform, aiUnits);
                 break;
         }

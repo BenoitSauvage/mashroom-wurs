@@ -12,10 +12,16 @@ public class GV {
     public static readonly string UNIT_AI_TAG = "AIUnit";
 
     // MUSHROOM
-    public enum MUSHROMM_TYPE { PLAYER, AI };
+    public enum MUSHROOM_TYPE { PLAYER, AI };
+    public enum MUSHROOM_HOUSE_TYPE { MUSHROOM, FORGE };
     public static readonly string MUSHROOM_TAG_PLAYER = "PlayerMushroom";
     public static readonly string MUSHROOM_TAG_AI = "AIMushroom";
     public static readonly int MUSHROOM_MAX_UNIT = 20;
+
+    // FORGE
+    public static readonly string MUSHROOM_TAG_PLAYER_FORGE = "PlayerForge";
+    public static readonly string MUSHROOM_TAG_AI_FORGE = "AIForge";
+    public static readonly int FORGE_DAMAGE_MULTIPLIER = 2;
 
     // AI
     public static readonly List<float> SPAWN_PERCENTAGE = new List<float>(){ .1f, .25f, .5f, .75f, 1f };

@@ -8,12 +8,12 @@ public class Tower : MonoBehaviour {
         switch (other.tag) {
             case "PlayerUnit":
                 if (TryToKillUnit()) {
-                    UnitsManager.Instance.RemoveUnit(other.transform, GV.MUSHROMM_TYPE.PLAYER);
+                    UnitsManager.Instance.RemoveUnit(other.transform, GV.MUSHROOM_TYPE.PLAYER);
                 }
                 break;
             case "AIUnit":
                 if (TryToKillUnit()) {
-                    UnitsManager.Instance.RemoveUnit(other.transform, GV.MUSHROMM_TYPE.AI);
+                    UnitsManager.Instance.RemoveUnit(other.transform, GV.MUSHROOM_TYPE.AI);
                 }
                 break;
         }

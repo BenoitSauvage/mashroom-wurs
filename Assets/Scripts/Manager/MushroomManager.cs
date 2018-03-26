@@ -30,11 +30,17 @@ public class MushroomManager
         playerParent = _player;
         aiParent = _ai;
 
-        foreach (Transform player in playerParent)
-            m_player.Add(player, player.GetComponent<Mushroom>());
+        foreach (Transform player in playerParent) {
+            House h = player.GetComponent<House>();
+            if (h.house_type == GV.MUSHROOM_HOUSE_TYPE.MUSHROOM)
+                m_player.Add(player, player.GetComponent<Mushroom>());
+        }
 
-        foreach (Transform ai in aiParent)
-            m_ai.Add(ai, ai.GetComponent<Mushroom>());
+        foreach (Transform ai in aiParent) {
+            House h = ai.GetComponent<House>();
+            if (h.house_type == GV.MUSHROOM_HOUSE_TYPE.MUSHROOM)
+                m_ai.Add(ai, ai.GetComponent<Mushroom>());
+        }
     }
 
     public void Update(float _dt) {
@@ -71,15 +77,15 @@ public class MushroomManager
         return null;
     }
 
-    public void SwitchTeam (Transform _transform, GV.MUSHROMM_TYPE _type, Mushroom _mushroom) {
+    public void SwitchTeam (Transform _transform, GV.MUSHROOM_TYPE _type, Mushroom _mushroom) {
         switch (_type) {
-            case GV.MUSHROMM_TYPE.PLAYER:
+            case GV.MUSHROOM_TYPE.PLAYER:
                 m_ai.Remove(_transform);
                 m_player.Add(_transform, _mushroom);
                 _transform.SetParent(playerParent);
                 _transform.tag = GV.MUSHROOM_TAG_PLAYER;
                 break;
-            case GV.MUSHROMM_TYPE.AI:
+            case GV.MUSHROOM_TYPE.AI:
                 m_player.Remove(_transform);
                 m_ai.Add(_transform, _mushroom);
                 _transform.SetParent(aiParent);
