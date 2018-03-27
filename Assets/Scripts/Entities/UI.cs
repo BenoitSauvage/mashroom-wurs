@@ -22,4 +22,16 @@ public class UI : MonoBehaviour {
         progress.value = _player;
     }
 
+    public void PauseGame () {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame () {
+        Time.timeScale = 1;
+    }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
+
 }
