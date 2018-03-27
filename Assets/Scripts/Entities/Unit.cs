@@ -24,6 +24,21 @@ public class Unit : MonoBehaviour {
         agent.SetDestination(destination.position);
     }
 
+    void OnCollisionEnter(Collision coll)
+    {
+        Debug.Log("Collision : " + gameObject.tag + " & " + coll.gameObject.tag);
+
+        if ((coll.gameObject.tag == "AIUnit" || coll.gameObject.tag == "PlayerUnit") && coll.gameObject.tag != gameObject.tag) {
+            Debug.Log("true");
+
+            Destroy(coll.gameObject);
+            Destroy(gameObject);
+
+        }
+
+
+    }
+
     public bool IsArrived () {
         if (destination)
             return Vector3.Distance(agent.transform.position, destination.transform.position) <= agent.stoppingDistance + .5f;
