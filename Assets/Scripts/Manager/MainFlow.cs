@@ -30,6 +30,12 @@ public class MainFlow : MonoBehaviour {
         if (MushroomManager.Instance.m_ai.Count <= 0 
             && UnitsManager.Instance.playerUnits.Count <= 0 
             && UnitsManager.Instance.aiUnits.Count <= 0 ) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(GV.GAME_OVER_WIN_SCENE);
+        }
+
+        if (MushroomManager.Instance.m_player.Count <= 0
+            && UnitsManager.Instance.playerUnits.Count <= 0
+            && UnitsManager.Instance.aiUnits.Count <= 0){
             UnityEngine.SceneManagement.SceneManager.LoadScene(GV.GAME_OVER_SCENE);
         }
     }
