@@ -26,17 +26,13 @@ public class Unit : MonoBehaviour {
 
     void OnCollisionEnter(Collision coll)
     {
-        Debug.Log("Collision : " + gameObject.tag + " & " + coll.gameObject.tag);
-
         if ((coll.gameObject.tag == "AIUnit" || coll.gameObject.tag == "PlayerUnit") && coll.gameObject.tag != gameObject.tag) {
-            Debug.Log("true");
+
+            UnitsManager.Instance.RemoveCorps(gameObject, coll.gameObject);
 
             Destroy(coll.gameObject);
             Destroy(gameObject);
-
         }
-
-
     }
 
     public bool IsArrived () {

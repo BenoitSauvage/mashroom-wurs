@@ -56,6 +56,7 @@ public class UnitsManager {
     }
 
     public void UpdateAIUnits(float _dt) {
+
         for (int i = aiUnits.Count - 1; i >= 0; i--) {
             TransformDestinations td = aiUnits[i];
 
@@ -64,11 +65,59 @@ public class UnitsManager {
 
             td.timePassed += _dt;
 
+
+
             if (td.script.IsArrived()) {
                 UnitsManager.Instance.Fight(td);
                 aiUnits.Remove(td);
             }
         }
+    }
+
+
+    public void RemoveCorps(GameObject unitA, GameObject unitB) {
+        bool breaker = true;
+
+        if (unitA.tag == "PlayerUnit")
+        {
+            for (int i = playerUnits.Count - 1; i >= 0 && breaker; i--)
+            {
+                if (playerUnits[i].unit.gameObject == unitA)
+                {
+                    playerUnits.RemoveAt(i);
+                    breaker = false;
+                }
+            }
+            breaker = true;
+            for (int i = aiUnits.Count -1; i >= 0 && breaker; i--)
+            {
+                if (aiUnits[i].unit.gameObject == unitB)
+                {
+                    aiUnits.RemoveAt(i);
+                    breaker = false;
+                }
+            }
+        }
+        else {
+            for (int i = playerUnits.Count -1 ; i >= 0 && breaker; i--)
+            {
+                if (playerUnits[i].unit.gameObject == unitB)
+                {
+                    playerUnits.RemoveAt(i);
+                    breaker = false;
+                }
+            }
+            breaker = true;
+            for (int i = aiUnits.Count-1; i >= 0 && breaker; i--)
+            {
+                if (aiUnits[i].unit.gameObject == unitA)
+                {
+                    aiUnits.RemoveAt(i);
+                    breaker = false;
+                }
+            }
+        }
+
     }
 
     public void SendPlayerUnits (Transform _start, Transform _end, float _percentage) {
